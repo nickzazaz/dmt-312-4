@@ -1,0 +1,116 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    margin: 0;
+    padding: 2%;
+    color: #333;
+}
+
+/* โครงสร้างหลัก แบ่งหน้าจอเป็น 2 คอลัมน์ (ซ้าย 48%, ขวา 48%, ช่องว่าง 4%) */
+.main-grid-container {
+    display: grid;
+    grid-template-columns: 48% 48%; 
+    gap: 4%; 
+    width: 90%; 
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* การตกแต่งกล่อง (Box) แต่ละใบ */
+.grid-item {
+    background-color: #ffffff;
+    padding: 5%; 
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+/* คลาสสำหรับให้กล่องขยายเต็ม 2 คอลัมน์ (Header และ Footer) */
+.full-width {
+    grid-column: 1 / span 2;
+}
+
+/* สีสัน Header และ Footer */
+#header {
+    background-color: #d9381e;
+    color: white;
+    text-align: center;
+}
+
+#footer {
+    background-color: #2a3d45;
+    color: white;
+    text-align: center;
+}
+
+#footer a {
+    color: #e9c46a;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+h1, h2 {
+    margin-top: 0;
+}
+
+h2 {
+    color: #d9381e;
+    border-bottom: 2px solid #f4a261;
+    padding-bottom: 10px;
+}
+
+/* รูปภาพหลักฝั่งซ้าย (Ingredients) */
+.main-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+}
+
+/* Grid ย่อยสำหรับจัดระเบียบรูปภาพวิธีทำฝั่งซ้าย */
+.instruction-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px; 
+}
+
+.instruction-gallery img {
+    width: 100%;
+    aspect-ratio: 4 / 3; /* บังคับสัดส่วนภาพไม่ให้ล้นและเท่ากันทุกรูป */
+    object-fit: cover; 
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: block;
+}
+
+/* ปรับระยะห่างของข้อความ */
+.text-box p, .text-box ul {
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.instruction-list li {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+/* ---------------------------------------------------
+   Media Query สำหรับหน้าจอโทรศัพท์ (Mobile)
+--------------------------------------------------- */
+@media only screen and (max-width: 768px) {
+    /* เปลี่ยนจาก 2 คอลัมน์ ให้กลายเป็น 1 คอลัมน์ (100%) */
+    .main-grid-container {
+        grid-template-columns: 100%; 
+        width: 95%;
+        gap: 20px;
+    }
+    
+    /* ยกเลิกการขยายเต็มพื้นที่ เพราะทุกกล่องจะเรียงต่อกันเป็น 1 คอลัมน์อยู่แล้ว */
+    .full-width {
+        grid-column: 1 / span 1;
+    }
+}
